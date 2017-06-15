@@ -25,8 +25,8 @@ SECRET_KEY = '=lg3ll4-szet&5=zmz0jk@!ddl^$d6o_$obk_9)4iwcj1s-xez'
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
 
-if 'projects' in os.path.realpath(__file__):
-    ALLOWED_HOSTS = []
+if 'Projects' in os.path.realpath(__file__):
+    ALLOWED_HOSTS = ['127.0.0.1']
 else:
     ALLOWED_HOSTS = ['cattwister.pythonanywhere.com']
 
@@ -76,7 +76,7 @@ WSGI_APPLICATION = 'djangogirls.wsgi.application'
 # Database
 # https://docs.djangoproject.com/en/1.11/ref/settings/#databases
 
-if 'projects' in os.path.realpath(__file__):
+if 'Projects' in os.path.realpath(__file__):
     DATABASES = {
         'default': {
     			'ENGINE': 'django.db.backends.mysql',
