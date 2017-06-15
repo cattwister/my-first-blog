@@ -25,8 +25,10 @@ SECRET_KEY = '=lg3ll4-szet&5=zmz0jk@!ddl^$d6o_$obk_9)4iwcj1s-xez'
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
 
-ALLOWED_HOSTS = []
-
+if 'projects' in os.path.realpath(__file__):
+    ALLOWED_HOSTS = []
+else:
+    ALLOWED_HOSTS = ['cattwister.pythonanywhere.com']
 
 # Application definition
 
@@ -74,16 +76,23 @@ WSGI_APPLICATION = 'djangogirls.wsgi.application'
 # Database
 # https://docs.djangoproject.com/en/1.11/ref/settings/#databases
 
-DATABASES = {
-    'default': {
-			'ENGINE': 'django.db.backends.mysql',
-			'NAME': 'djangogirls',
-			'USER': 'myprojectuser',
-			'PASSWORD': 'grumbles',
-			'HOST': '127.0.0.1',
+if 'projects' in os.path.realpath(__file__):
+    DATABASES = {
+        'default': {
+    			'ENGINE': 'django.db.backends.mysql',
+    			'NAME': 'djangogirls',
+    			'USER': 'myprojectuser',
+    			'PASSWORD': 'grumbles',
+    			'HOST': '127.0.0.1',
+        }
     }
-}
-
+else:
+    DATABASES = {
+        'default': {
+            'ENGINE': 'django.db.backends.sqlite3',
+            'NAME': os.path.join(BASE_DIR, 'db.sqlite3'),
+        }
+    }
 
 # Password validation
 # https://docs.djangoproject.com/en/1.11/ref/settings/#auth-password-validators
